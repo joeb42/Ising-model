@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.0.0)
+project(Ising VERSION 0.1.0)
+
+include(CTest)
+enable_testing()
+include_directories( include )
+add_link_options(-fopenmp)
+set(SOURCE_FILES src/main.cpp
+                 src/Lattice2D.cpp
+                 src/LatticeBase.cpp)
+add_executable(Ising ${SOURCE_FILES})
+find_package(GSL REQUIRED)
+target_link_libraries(Ising GSL::gsl GSL::gslcblas)
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
