@@ -5,6 +5,7 @@ include(CTest)
 enable_testing()
 include_directories( include )
 add_link_options(-fopenmp)
+add_compile_options(-fopenmp)
 set(SOURCE_FILES src/main.cpp
                  src/Lattice2D.cpp
                  src/LatticeBase.cpp)
