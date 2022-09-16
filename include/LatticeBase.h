@@ -14,7 +14,6 @@ class LatticeBase {
     public:
         virtual void write_grid() = 0;
         virtual int delta_E(const std::vector<int> &coords) = 0;
-        virtual void sweep(int offset) = 0;
         virtual void sweep() = 0;
         // virtual double energy() = 0;
         // virtual double E_squared() = 0;

@@ -1,8 +1,6 @@
 #pragma once
 #include "LatticeBase.h"
 #include <vector>
-#include <gsl/gsl_rng.h>
-
 
 class Lattice2D: public LatticeBase {
 
