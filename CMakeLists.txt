@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.0)
-set(CMAKE_CXX_COMPILER "g++-11")
+set(CMAKE_CXX_COMPILER "g++")
 project(Ising VERSION 0.1.0)
 
 include(CTest)
@@ -8,8 +8,8 @@ include_directories( include )
 add_link_options(-fopenmp)
 add_compile_options(-fopenmp)
 set(SOURCE_FILES src/main.cpp
-                 src/Lattice2D.cpp
-                 src/LatticeBase.cpp)
+                 lib/Lattice2D.cpp
+                 lib/LatticeBase.cpp)
 add_executable(Ising ${SOURCE_FILES})
 find_package(GSL REQUIRED)
 target_link_libraries(Ising GSL::gsl GSL::gslcblas)
