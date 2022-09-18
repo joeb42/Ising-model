@@ -8,7 +8,7 @@ int main(int argc, char **argv) {
     int dim, sweeps, threads;
     float T;
     if (argc != 5) {
-        dim = 100;
+        dim = 10;
         T = 1.1;
         sweeps = 100;
         threads = 4;
@@ -25,4 +25,4 @@ int main(int argc, char **argv) {
     }
     lattice.write_grid();
     return 0;
-} 
+}

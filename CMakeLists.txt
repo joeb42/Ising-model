@@ -11,8 +11,12 @@ set(SOURCE_FILES src/main.cpp
                  lib/Lattice2D.cpp
                  lib/LatticeBase.cpp)
 add_executable(Ising ${SOURCE_FILES})
+add_executable(timing src/timing.cpp
+                lib/Lattice2D
+                lib/LatticeBase.cpp)
 find_package(GSL REQUIRED)
 target_link_libraries(Ising GSL::gsl GSL::gslcblas)
+target_link_libraries(timing GSL::gsl GSL::gslcblas)
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
