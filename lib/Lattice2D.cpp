@@ -21,6 +21,7 @@ void Lattice2D::write_grid() {
         else {
             std::cout << +i << ",";
         }
+        idx++;
     }
 }
 
@@ -44,7 +45,7 @@ void Lattice2D::sweep(int offset) {
     for (int i = 0; i < (dim * dim)/2; i++) {
         int min = omp_get_thread_num() * dim / (2 * n_threads);
         int range = ceil( (float) dim / (2 * n_threads));
-        int x = gsl_rng_uniform_int(r[omp_get_thread_num()], range + min) + offset;
+        int x = 2 * (gsl_rng_uniform_int(r[omp_get_thread_num()], range) + min) + offset;
         int y = gsl_rng_uniform_int(r[omp_get_thread_num()], dim);
         std::vector<int> coords = {x, y};
         int dE = delta_E(coords);
