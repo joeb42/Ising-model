@@ -62,6 +62,6 @@ void Lattice2D::sweep(int offset) {
 }
 
 void Lattice2D::sweep() {
-    Lattice2D::sweep(0);
-    Lattice2D::sweep(1);
+    sweep(0);
+    sweep(1);
 }
