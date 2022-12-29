@@ -1,5 +1,5 @@
 #include "LatticeBase.h"
-#include <iostream>
+#include <cmath> //std::pow
 
 void LatticeBase::set_rngs() {
 	int seed = 0;
@@ -11,7 +11,7 @@ void LatticeBase::set_rngs() {
 }
 
 void LatticeBase::set_grid() {
-        grid.resize(pow(dim, n_dim));
+        grid.resize(std::pow(dim, n_dim));
         for (auto &i: grid) {
             float z = gsl_rng_uniform(r[0]);
 	    i = (z > 0.5) ? 1 : -1; 
