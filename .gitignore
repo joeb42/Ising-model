@@ -4,8 +4,11 @@ CMakeFiles
 CMakeCache.txt 
 CPackConfig.cmake
 CTestTestfile.cmake 
+CPackSourceConfig.cmake
 DartConfiguration.tcl
+Makefile
 Ising
 Testing
 build
-
+.vscode*
+*.swp
