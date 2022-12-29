@@ -1,5 +1,4 @@
 #include "LatticeBase.h"
-#include <cmath>
 #include <iostream>
 
 void LatticeBase::set_rngs() {

@@ -1,8 +1,9 @@
 #include "Lattice2D.h"
-#include <cmath>
-#include <omp.h>
+#include <cmath> // std::exp
+#include <omp.h> // parallel processing
 #include <iostream>
 #include <array>
+#include <vector>
 
 Lattice2D::Lattice2D (int dimension, float temperature, int num_threads) { 
     n_dim = 2;
@@ -55,7 +56,7 @@ void Lattice2D::sweep(int offset) {
         }
         else {
             float n = gsl_rng_uniform(r[omp_get_thread_num()]);
-            if (exp(-dE/T) > n) {
+            if (std::exp(-dE/T) > n) {
                 grid[x*dim +y] *= -1;
             }
         }
