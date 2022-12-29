@@ -2,6 +2,7 @@
 #include <cmath>
 #include <omp.h>
 #include <iostream>
+#include <array>
 
 Lattice2D::Lattice2D (int dimension, float temperature, int num_threads) { 
     n_dim = 2;
@@ -14,7 +15,7 @@ Lattice2D::Lattice2D (int dimension, float temperature, int num_threads) {
 
 void Lattice2D::write_grid() {
     int idx = 0;
-    for (auto &i: grid) {
+    for (const auto &i: grid) {
         if (idx % dim == dim-1) {
             std::cout << +i << "\n";
         }
@@ -31,7 +32,7 @@ int Lattice2D::delta_E(const std::vector<int> &coords) {
     int x = coords[0];
     int y = coords[1];
     int s = 0;
-    std::vector<std::vector<int>> neighbours = {{x-1, y}, {x, y-1}, {x+1, y}, {x, y+1}};
+    std::array<std::array<int, 2>, 4> neighbours = {{{x-1, y}, {x, y-1}, {x+1, y}, {x, y+1}}};
     for (auto &neighbour: neighbours) {
         int row = (neighbour[0] + dim) % dim;
         int column = (neighbour[1] + dim) % dim;
