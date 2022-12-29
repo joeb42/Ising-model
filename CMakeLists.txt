@@ -1,22 +1,17 @@
 cmake_minimum_required(VERSION 3.0.0)
-set(CMAKE_CXX_COMPILER "g++")
 project(Ising VERSION 0.1.0)
 
-include(CTest)
-enable_testing()
 include_directories( include )
-add_link_options(-fopenmp)
-add_compile_options(-fopenmp)
-set(SOURCE_FILES src/main.cpp
-                 lib/Lattice2D.cpp
-                 lib/LatticeBase.cpp)
-add_executable(Ising ${SOURCE_FILES})
-add_executable(timing src/timing.cpp
-                lib/Lattice2D
-                lib/LatticeBase.cpp)
+set (LIB_FILES lib/LatticeBase.cpp
+		lib/Lattice2D.cpp)
+add_executable(Ising ${LIB_FILES} 
+		src/main.cpp)
+add_executable(timing ${LIB_FILES} 
+		src/timing.cpp)
+find_package(OpenMP REQUIRED)
 find_package(GSL REQUIRED)
-target_link_libraries(Ising GSL::gsl GSL::gslcblas)
-target_link_libraries(timing GSL::gsl GSL::gslcblas)
+target_link_libraries(Ising PUBLIC OpenMP::OpenMP_CXX GSL::gsl GSL::gslcblas)
+target_link_libraries(timing PUBLIC OpenMP::OpenMP_CXX GSL::gsl GSL::gslcblas)
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
