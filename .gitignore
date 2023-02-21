@@ -12,3 +12,4 @@ Testing
 build
 .vscode*
 *.swp
+*venv*
