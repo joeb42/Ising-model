@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
         std::cout << "parameters: lattice dimension = " << dim << " temperature = " << T <<
         "K number of lattice sweeps = " << num_sweeps << "\nusing " << numprocs << " MPI workers\n"; 
     }
-    LatticeWorker worker(height, dim, T, rank, &status, numprocs);
+    LatticeWorker worker(height, dim, T, rank, status, numprocs);
     for (int sweep = 0; sweep < num_sweeps; sweep++) {
         worker.sweep();
     }
@@ -27,11 +27,11 @@ int main(int argc, char **argv) {
         std::vector<int8_t> lattice (dim * dim);
         MPI_Gather(worker.sub_lattice.data() + dim, worker.sub_lattice.size() - 2 * dim, MPI_INT8_T, lattice.data(), worker.sub_lattice.size() - 2 * dim, MPI_INT8_T, 0, MPI_COMM_WORLD);
         // uncomment to print lattice
-        // for (int i = 0; i < dim; i++) {
-        //     for (int j = 0; j < dim; j++) {
-        //         std::cout << +lattice[i * dim + j] << ",";
-        //     }
-        // }
+        //for (int i = 0; i < dim; i++) {
+        //    for (int j = 0; j < dim; j++) {
+        //        std::cout << +lattice[i * dim + j] << ",";
+        //    }
+        //}
     }
     else {
         MPI_Gather(worker.sub_lattice.data() + dim, worker.sub_lattice.size() - 2 * dim, MPI_INT8_T, NULL, 0, MPI_INT8_T, 0, MPI_COMM_WORLD);

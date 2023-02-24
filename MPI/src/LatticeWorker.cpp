@@ -9,12 +9,12 @@
 #define ODD 1 
 #define EVEN 0
 
-LatticeWorker::LatticeWorker(int height_, int width_, float T_, int id_, MPI_Status *status_, int numprocs_) {
+LatticeWorker::LatticeWorker(int height_, int width_, float T_, int id_, MPI_Status &status_, int numprocs_) {
     height = height_;
     width = width_;
     T = T_;
     id = id_;
-    status = *status_;
+    status = status_;
     numprocs = numprocs_;
     sub_lattice.resize((height + 2) * (width));
     r = gsl_rng_alloc(gsl_rng_taus2);

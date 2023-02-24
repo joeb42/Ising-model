@@ -14,7 +14,7 @@ class LatticeWorker {
         MPI_Status status;
     
     public:
-        LatticeWorker(int height_, int width_, float T_, int id_, MPI_Status *status_, int numprocs);
+        LatticeWorker(int height_, int width_, float T_, int id_, MPI_Status &status_, int numprocs);
         void set_lattice();
         std::vector<int8_t> sub_lattice;
         // energy change of flipping spin at coords[0], coords[1]
